@@ -12,7 +12,8 @@ import Forgotpasword from './pages/forgotpasword'
 import Cart from './pages/cart'
 import Checkout from './pages/checkout'
 import Blog from './pages/blog'
-import './App.css'
+import Dashboard from './pages/Dashboard/Dashboard'
+import './App.scss'
 import ShopContext from './components/shopcontext'
 import Details from './pages/details'
 
@@ -31,26 +32,27 @@ function App() {
 
   return (
     <>
-    <ShopContext>
-    <BrowserRouter>
-    <ScrollToTop />
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path='shop' element={<Shop />} />
-        <Route path='blog' element={<Blog />} />
-        <Route path='about' element={<About />} />
-        <Route path='contact' element={<Contact />} />
-        <Route path='login' element={<Login />} />
-        <Route path='signup' element={<Signup />} />
-        <Route path='forgotpasword' element={<Forgotpasword />} />
-        <Route path='cart' element={<Cart />} />
-        <Route path='checkout' element={<Checkout />} />
-        <Route path='details' element={<Details />} />
-      </Route>
-    </Routes>
-    </BrowserRouter>
-    </ShopContext>
+      <ShopContext>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path='/' element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path='shop' element={<Shop />} />
+              <Route path='blog' element={<Blog />} />
+              <Route path='about' element={<About />} />
+              <Route path='contact' element={<Contact />} />
+              <Route path='login' element={<Login />} />
+              <Route path='signup' element={<Signup />} />
+              <Route path='forgotpasword' element={<Forgotpasword />} />
+              <Route path='cart' element={<Cart />} />
+              <Route path='checkout' element={<Checkout />} />
+              <Route path='detail/:id' element={<Details />} />
+            </Route>
+            <Route path='/dashboard/*' element={<Dashboard />} />
+          </Routes>
+        </BrowserRouter>
+      </ShopContext>
     </>
   )
 }

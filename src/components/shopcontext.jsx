@@ -13,7 +13,7 @@ const getDefaultCart = () => {
   for (let i = 0; i < PRODUCTS.length + PRODUCTS1.length; i++) {
     cart[i] = 0;
   }
-  
+
   return cart;
 };
 
@@ -22,13 +22,13 @@ const shopcontext = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const getTotalCartAmount = () => {
     let totalAmount = 0;
-  for (const item in cartItems) {
-    if (cartItems[item] > 0) {
-      let itemInfo = PRODUCTS.find((product) => product.id === Number(item)) || PRODUCTS1.find((product) => product.id === Number(item));
-      totalAmount += cartItems[item] * itemInfo.price;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = PRODUCTS.find((product) => product.id === Number(item)) || PRODUCTS1.find((product) => product.id === Number(item));
+        totalAmount += cartItems[item] * itemInfo.price;
+      }
     }
-  }
-  return totalAmount.toFixed(2);
+    return totalAmount.toFixed(2);
   };
 
   const getTotalCartProducts = () => {
@@ -40,7 +40,7 @@ const shopcontext = (props) => {
     }
     return totalProducts;
   };
-  
+
 
   const addToCart = (productId) => {
     setCartItems((prev) => ({
@@ -48,14 +48,14 @@ const shopcontext = (props) => {
       [productId]: prev[productId] + 1
     }));
   };
-  
+
   const removeToCart = (productId) => {
     setCartItems((prev) => ({
       ...prev,
       [productId]: prev[productId] - 1
     }));
   };
-  
+
   const updateCartItemCount = (newAmount, productId) => {
     setCartItems((prev) => ({
       ...prev,
@@ -68,7 +68,7 @@ const shopcontext = (props) => {
       updatedCartItems[productId] = 0;
     }
     setCartItems(updatedCartItems);
-  };  
+  };
 
   const resetCart = () => {
     setCartItems([]);
@@ -83,7 +83,7 @@ const shopcontext = (props) => {
   const closeProductDetails = () => {
     setSelectedProduct(null);
   };
-  
+
 
   const contextValue = {
     cartItems,
@@ -99,7 +99,7 @@ const shopcontext = (props) => {
     selectedProduct,
   };
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <ShopContext.Provider value={contextValue}>
